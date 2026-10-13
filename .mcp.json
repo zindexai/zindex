@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "zindex": {
+      "type": "http",
+      "url": "https://api.zindex.ai/mcp"
+    }
+  }
+}

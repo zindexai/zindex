@@ -1,0 +1,26 @@
+{
+  "name": "zindex",
+  "displayName": "Zindex",
+  "version": "6.0.0",
+  "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server. Your agent saves diagrams, changes them later from any client, and reads any revision by number or date.",
+  "author": {
+    "name": "Zindex",
+    "email": "support@zindex.ai",
+    "url": "https://zindex.ai"
+  },
+  "homepage": "https://zindex.ai",
+  "repository": "https://github.com/zindexai/zindex",
+  "license": "Apache-2.0",
+  "keywords": [
+    "diagrams",
+    "mcp",
+    "mermaid",
+    "architecture",
+    "erd",
+    "versioning"
+  ],
+  "documentationUrl": "https://zindex.ai/docs/tools/",
+  "supportUrl": "https://zindex.ai/contact/",
+  "privacyPolicyUrl": "https://zindex.ai/privacy/",
+  "termsOfServiceUrl": "https://zindex.ai/terms/"
+}

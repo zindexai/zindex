@@ -1,0 +1,15 @@
+{
+  "name": "zindex",
+  "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server at https://api.zindex.ai/mcp.",
+  "owner": {
+    "name": "Zindex",
+    "email": "support@zindex.ai",
+    "url": "https://zindex.ai"
+  },
+  "plugins": [
+    {
+      "name": "zindex",
+      "source": "./"
+    }
+  ]
+}

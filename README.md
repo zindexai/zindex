@@ -13,7 +13,7 @@ Nothing runs on your computer. The MCP server is remote, and the plugin only tel
 
 ## Signing in
 
-Without an account, the agent can check a diagram (`diagram_validate`) and preview one without saving it (`diagram_render`). When a tool needs your account, your client sends you to a Zindex page where you sign in or sign up and choose **Allow**. Each client's steps are below.
+Without an account, the agent can check a diagram (`diagram_validate`) and preview one without saving it (`diagram_render`). When a tool needs your account, your client sends you to a Zindex page where you sign in or sign up, choose whether the agent may change diagrams or only read them (and, if you belong to a team workspace, which workspace it works in), and choose **Allow**. Each client's steps are below.
 
 The plugin always connects with that sign-in. It carries no API key. To connect with an API key instead, skip the plugin and add the server yourself, as the [connect guide](https://zindex.ai/docs/tools/) shows.
 
@@ -87,13 +87,13 @@ Clients that support [Agent Plugins 1.0](https://agent-plugins.org/specification
 | `diagram_render` | Returns SVG and PNG links |
 | `diagram_history` | Lists revisions, or compares two |
 | `diagram_delete` | Deletes a diagram, with a 24-hour undo |
-| `diagram_share` | Publishes a diagram, makes share links (Pro plan), reports a problem or sends feedback |
+| `diagram_share` | Publishes a diagram, makes share links (Pro or Team), reports a problem or sends feedback |
 
 `diagram_delete` asks you to confirm. `diagram_share` asks before it publishes a diagram, makes a share link, reports a problem or sends feedback. The [MCP tools reference](https://zindex.ai/docs/tools/) has every input.
 
 ## What the tools send
 
-Each tool call sends its arguments to `api.zindex.ai` over HTTPS: a diagram as scene JSON or Mermaid text, an edit, a one-line message, a search. Zindex keeps your diagrams and every revision in your account for as long as the account is active, unless you delete them. The [privacy policy](https://zindex.ai/privacy/) covers the rest.
+Each tool call sends its arguments to `api.zindex.ai` over HTTPS: a diagram as scene JSON or Mermaid text, an edit, a one-line message, a search. Zindex keeps your diagrams and every revision in their workspace for as long as it exists, unless you delete them. The [privacy policy](https://zindex.ai/privacy/) covers the rest.
 
 ## Files
 

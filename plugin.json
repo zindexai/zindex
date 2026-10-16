@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "zindex",
-  "version": "6.7.0",
+  "version": "6.7.3",
   "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server. Your agent saves diagrams, changes them later from any client, and reads any revision by number or date.",
   "author": {
     "name": "Zindex",

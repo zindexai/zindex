@@ -45,7 +45,7 @@ Each key or sign-in works in one workspace: the person's own, or a team workspac
 
 ## Ask first
 
-`diagram_delete` removes a diagram; `diagram_share` with `publish` makes it readable by anyone with its link, with `link` makes a share link that shows its images (never its scene) to anyone who has it until `unlink` revokes it (on Pro and Team; on Free it returns `FEATURE_UNAVAILABLE`; publishing works on every plan and makes the scene public too), and with `report` sends one version to Zindex support (anonymized unless `anonymize` is false). The person confirms each of them. Unpublishing leaves share links working; `unlink` revokes them. Taking a link down stops new fetches at once; copies people already saved stay with them. If a tool returns `CONFIRMATION_REQUIRED`, tell the person what will happen and call again with the `confirm` token only after they agree.
+`diagram_delete` removes a diagram; `diagram_share` with `publish` makes it readable by anyone with its link, with `link` makes a share link that shows its images (never its scene) to anyone who has it until `unlink` revokes it (on Pro and Team; on Free it returns `FEATURE_UNAVAILABLE`; publishing works on every plan and makes the scene public too), and with `report` sends one version to Zindex support (anonymized unless `anonymize` is false). The person confirms each of them. Unpublishing leaves share links working; `unlink` revokes them (what each choice shows: https://zindex.ai/docs/concepts/#sharing). Taking a link down stops new fetches at once; copies people already saved stay with them. If a tool returns `CONFIRMATION_REQUIRED`, tell the person what will happen and call again with the `confirm` token only after they agree.
 
 ## What Zindex does not do
 

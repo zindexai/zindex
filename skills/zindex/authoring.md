@@ -33,7 +33,8 @@ Nodes: { id, kind: "node", nodeType, shape?, label, layout?, textStyle?, icon? }
 Using cylinder for object storage (or bucket for a database) produces diagrams that look wrong to a human reviewer - the visual language is load-bearing semantic information, not decoration.
 
 Edges: { id, kind: "edge", from: { elementId }, to: { elementId }, router?: "orthogonal" | "straight" | "curved", label?, edgeType? }
-- Default to router "orthogonal" - the engine's router produces clean centered-entry routes with obstacle-aware step-path fallbacks.
+- Default to router "orthogonal" - the engine's router enters the side facing the source, at its centre or straight across where the nodes line up, with obstacle-aware step-path fallbacks.
+- To pick where an edge meets a node, give the endpoint an anchor: from: { elementId, anchor: { side: "left", offset: 0.25 } }. side alone fixes the side; offset (0 to 1, from the side's top on left and right sides, its left on top and bottom ones) the place. Anchored edges never share a trunk, so anchors separate two edges that leave one side. Nodes don't move for anchors. A sequence message, a self-loop and an end with a column ignore their anchor (EDGE_ANCHOR_IGNORED). updateEdge replaces from and to whole: send the anchor again.
 
 Multi-line text: set textStyle: { wrap: "word", align?, verticalAlign? } on a node with a layout width and layout.autoSize: "content"; the node keeps the width and the engine gives it the height the wrapped text and its icon need, growing down from its top edge; nodes it grows into move down to keep the spacing (the node spacing in a left-to-right flow, the rank spacing in a top-to-bottom one). The grown height isn't stored: it follows the text. wrap: "character" also breaks long identifiers and URLs. Without autoSize the node keeps its layout height, and TEXT_OVERFLOW gives the height text needs that doesn't fit. Or break lines with \n and let the engine size the node. Don't use node + text overlay workarounds.
 
@@ -91,16 +92,18 @@ The `style` field on every element accepts EITHER a named-style string OR an inl
 Inline (put directly on the element): `style: { fill, stroke, strokeWidth, dash, textColor, fontFamily, fontSize, cornerRadius, opacity, accentColor }`. `dash` takes a number array like [4,4] for dashed strokes.
 Named (define once in scene.styles, reference by key): `styles: { brand: { fill: "#003366" } }` then `style: "brand"` on each element.
 
-Text color auto-adjusts for contrast against custom fills if you don't set textColor explicitly. Set textColor to override.
+Text color auto-adjusts for contrast against custom fills if you don't set textColor explicitly. Set textColor to override; an edge label, or a label drawn outside its shape (BPMN events and gateways), is still made lighter or darker if it would be unreadable on what it lands on.
 
 Scene-level palette: set `palette` at the scene root (e.g. `palette: { nodeFill: "#003366", edgeStroke: "#004488" }`) to override theme defaults for all unstyled elements - element explicit styles still win.
+
+Pick colors for a light canvas. A dark preview (`POST /v1/diagrams/preview` with `theme` set to `dark`, `blueprint` or `sketch`, or the playground's theme menu) adapts them, keeping each hue; a dark `palette.background`, or a dark `canvas.background` with none, makes the scene a dark design, drawn as written. MCP's `diagram_render` takes no theme: it draws as saved versions are drawn, in the default style (or `dark` for a dark `canvas.background`), with the scene's colors as written.
 
 ## Icons
 Set icon to a semantic key. ~102 built-in icons across two packs:
 - Lucide (~52): "lucide:database", "lucide:server", "lucide:cloud", "lucide:shield", etc. Match the node's text color.
 - AWS (~50): "aws:lambda", "aws:s3", "aws:ec2", "aws:dynamodb", "aws:api-gateway", "aws:certificate-manager", "aws:backup", "aws:budgets", etc. Use brand colors.
 
-URL fallback: "icon": "https://example.com/custom.svg". All icons embed as base64 - no external requests at render time.
+URL fallback: "icon": "https://example.com/custom.svg" is drawn with the URL as its href, loaded by whoever views the SVG, and left out of PNG output. Built-in icons embed as base64, so the image needs no other request.
 
 AWS icons (aws:*) render icon-only by default - no bounding rectangle - so they composite cleanly over container fills (VPC, subnet, region). Only the aws and lucide packs exist (every key: https://zindex.ai/docs/reference/element-types/#icons). An unknown key, such as gcp:*, azure:* or a Lucide name outside the built-in set, renders no icon (a gcp:* or azure:* node keeps its box) and the save returns ICON_NOT_FOUND with the keys spelled like it, so use a URL for anything else; icon: null on updateNode removes an icon. For cloud architecture diagrams, place icon nodes inside a frame with a tinted fill and the icons appear on the colored background, matching AWS Architecture Icons convention.
 
@@ -110,7 +113,7 @@ The same default-equivalent rule applies to module/group frames inside colored c
 
 For module/group frames inside colored containers, the recommended alpha is rgba(255, 255, 255, 0.5). This produces a visible-but-subtle white card that lets the parent's color show through clearly, matching AWS-reference contrast. Higher alphas (0.7-0.85) look mostly opaque and obscure the parent color; lower alphas (0.2-0.3) lose the card grouping. 0.5 is the sweet spot. Use no fill (or "none") if you want fully transparent dashed boundaries with no card effect.
 
-EDGES TO A GROUP AS A WHOLE. Edges may target a frame ID directly (not just nodes). The arrow then terminates at the frame's border using cardinal anchors. Use this when the connection is semantically abstract - "this thing depends on Regional Services" or "uses the Customer Managed Resources cluster" - rather than a specific service inside. AWS Reference Architecture diagrams draw it the same way: a sidebar group gets one arrow to the group, not one to each service inside.
+EDGES TO A GROUP AS A WHOLE. Edges may target a frame ID directly (not just nodes). The arrow then terminates at the frame's border, on the side facing the source, straight across where the source lines up and otherwise at the side's centre. Use this when the connection is semantically abstract - "this thing depends on Regional Services" or "uses the Customer Managed Resources cluster" - rather than a specific service inside. AWS Reference Architecture diagrams draw it the same way: a sidebar group gets one arrow to the group, not one to each service inside.
 
 Two cases for using a frame as the target:
 

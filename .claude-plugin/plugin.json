@@ -1,7 +1,7 @@
 {
   "name": "zindex",
   "displayName": "Zindex",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server. Your agent saves diagrams, changes them later from any client, and reads any revision by number or date.",
   "author": {
     "name": "Zindex",

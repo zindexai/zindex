@@ -116,7 +116,7 @@ Each tag, such as `v6.0.0`, names the Zindex release these files shipped with.
 
 ## Reporting a problem
 
-Open an issue on [this repository](https://github.com/zindexai/zindex/issues) for a problem with the skill or the install steps. For a problem with the service itself, such as an error from a tool or a drawing that looks wrong, write to support@zindex.ai.
+Open an issue on [this repository](https://github.com/zindexai/zindex/issues) for a problem with the skill or the install steps. For a problem with the service itself, such as an error from a tool or a drawing that looks wrong, write to support@zindex.ai. Report a security problem privately, never in an issue: <https://zindex.ai/security/>.
 
 ## License
 

@@ -1,6 +1,6 @@
 # Zindex
 
-Immutable agent diagrams. Zindex saves the diagrams your agent makes as numbered revisions that never change. Later, from another conversation or another tool, the agent can read the same diagram, change it and render it, and open any revision by number or by date. Your AI draws. Zindex keeps. Zindex runs no model on your diagrams.
+Immutable agent diagrams. Zindex saves the diagrams your agent makes as numbered revisions that never change. Later, from another conversation or another tool, the agent can read the same diagram, change it and render it, and open any revision by number or by date. Your agent says what's in a diagram; Zindex lays it out and draws it with code, not a model.
 
 This repository is the Zindex plugin. It works in Claude Code, Claude, VS Code, Cursor, Gemini CLI and other agents that load plugins.
 

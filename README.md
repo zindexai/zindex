@@ -57,7 +57,7 @@ Clone this repository into Cursor's local plugin folder, then run **Developer: R
 git clone https://github.com/zindexai/zindex ~/.cursor/plugins/local/zindex
 ```
 
-Sign in when Cursor asks. Run `git pull` in that folder to update. On Teams and Enterprise plans, an admin decides whether local plugins load. To add only the MCP server, use the one-click link in the [connect guide](https://zindex.ai/docs/tools/).
+Sign in when Cursor asks. Run `git pull` in that folder to update. On Enterprise plans, an admin decides whether local plugins load. To add only the MCP server, use the one-click link in the [connect guide](https://zindex.ai/docs/tools/).
 
 ### Gemini CLI
 
@@ -69,7 +69,7 @@ Then start Gemini CLI and run `/mcp auth zindex` to sign in. `gemini extensions 
 
 ### ChatGPT
 
-Add a connector with the URL `https://api.zindex.ai/mcp` and OAuth sign-in. ChatGPT opens the Zindex page the first time a tool needs your account.
+On the web, open Plugins ([chatgpt.com/plugins](https://chatgpt.com/plugins)), choose **Add custom MCP server**, enter `https://api.zindex.ai/mcp` with OAuth sign-in, and create it as a plugin. ChatGPT opens the Zindex page the first time a tool needs your account.
 
 ### Other clients
 
@@ -93,7 +93,7 @@ Clients that support [Agent Plugins 1.0](https://agent-plugins.org/specification
 
 ## What the tools send
 
-Each tool call sends its arguments to `api.zindex.ai` over HTTPS: a diagram as scene JSON or Mermaid text, an edit, a one-line message, a search. Zindex keeps your diagrams and every revision in their workspace for as long as it exists, unless you delete them. The [privacy policy](https://zindex.ai/privacy/) covers the rest.
+Each tool call sends its arguments to `api.zindex.ai` over HTTPS: a diagram as scene JSON or Mermaid text, an edit, a one-line message, a search. Zindex keeps your diagrams and every revision in their workspace for as long as it exists, unless you delete them; closing your account, or a free account unused for 12 months, deletes its personal workspace. The [privacy policy](https://zindex.ai/privacy/) covers the rest.
 
 ## Files
 

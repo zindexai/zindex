@@ -1,6 +1,6 @@
 {
   "name": "zindex",
-  "version": "8.10.1",
+  "version": "8.10.3",
   "description": "Create versioned diagrams that your team and agents keep editing: the Zindex skill and the Zindex MCP server.",
   "mcpServers": {
     "zindex": {

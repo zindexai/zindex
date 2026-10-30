@@ -2,7 +2,7 @@
 
 Immutable agent diagrams. Zindex saves the diagrams your agent makes as numbered revisions that never change. Later, from another conversation or another tool, the agent can read the same diagram, change it and render it, and open any revision by number or by date. Your agent says what's in a diagram; Zindex lays it out and draws it with code, not a model.
 
-This repository is the Zindex plugin. It works in Claude Code, Claude, VS Code, Cursor, Gemini CLI and other agents that load plugins.
+This repository is the Zindex plugin. It works in Claude Code, Claude, VS Code, Cursor, Antigravity CLI and other agents that load plugins.
 
 ## What it installs
 
@@ -13,7 +13,7 @@ Nothing runs on your computer. The MCP server is remote, and the plugin only tel
 
 ## Signing in
 
-Without an account, the agent can check a diagram (`diagram_validate`) and preview one without saving it (`diagram_render`). When a tool needs your account, your client sends you to a Zindex page where you sign in or sign up, choose whether the agent may change diagrams or only read them (and, if you belong to a team workspace, which workspace it works in), and choose **Allow**. A new password account verifies its email on that page first; GitHub and Google sign-ups are verified at once. Each client's steps are below.
+Without an account, the agent can check a diagram (`diagram_validate`) and preview one without saving it (`diagram_render`). When a tool needs your account, your client sends you to a Zindex page where you sign in or sign up, choose whether the agent may change diagrams or only read them (and, if you belong to a team workspace, which workspace it works in), and choose **Allow**. A new password account verifies its email on that page first; GitHub and Google sign-ups are verified at once. Cursor and Antigravity CLI send you there when they connect instead. Each client's steps are below.
 
 The plugin always connects with that sign-in. It carries no API key. To connect with an API key instead, skip the plugin and add the server yourself, as the [connect guide](https://zindex.ai/docs/tools/) shows.
 
@@ -57,9 +57,19 @@ Clone this repository into Cursor's local plugin folder, then run **Developer: R
 git clone https://github.com/zindexai/zindex ~/.cursor/plugins/local/zindex
 ```
 
-Sign in when Cursor asks. Run `git pull` in that folder to update. On Enterprise plans, an admin decides whether local plugins load. To add only the MCP server, use the one-click link in the [connect guide](https://zindex.ai/docs/tools/).
+Cursor asks you to sign in when it connects. Run `git pull` in that folder to update. On Enterprise plans, an admin decides whether local plugins load. To add only the MCP server, use the one-click link in the [connect guide](https://zindex.ai/docs/tools/).
+
+### Antigravity CLI
+
+```bash
+agy plugin install https://github.com/zindexai/zindex
+```
+
+Then start Antigravity CLI and sign in when it asks; `/mcp` lists the server. Run the install again to update.
 
 ### Gemini CLI
+
+Since June 18, 2026, Google doesn't serve Gemini CLI to individual Google accounts and points them to Antigravity CLI (above). Gemini CLI still runs with a Gemini API key or a Gemini Code Assist license:
 
 ```bash
 gemini extensions install https://github.com/zindexai/zindex
@@ -101,6 +111,7 @@ Each tool call sends its arguments to `api.zindex.ai` over HTTPS: a diagram as s
 |---|---|
 | `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `.mcp.json` | Claude Code and Claude |
 | `plugin.json`, `mcp.json` | Clients that support Agent Plugins 1.0 |
+| `plugin.json`, `mcp_config.json` | Antigravity CLI |
 | `gemini-extension.json` | Gemini CLI |
 | `skills/zindex/` | All of them |
 

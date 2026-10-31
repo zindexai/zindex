@@ -7,6 +7,8 @@ description: Immutable agent diagrams. Save, change and render diagrams in Zinde
 
 Immutable agent diagrams. Every saved version is kept exactly as it was, with its own revision number and time, so a diagram made today can be read, changed and rendered the same way later, from any MCP client or the REST API.
 
+If no `diagram_*` tools are available, Zindex isn't connected. The steps for each app are at https://zindex.ai/connect/.
+
 ## The loop
 
 1. **Find, then create.** Look for the diagram before making one: the id in the repository's `.zindex.json` if it has one, else `diagram_find` with a few words of its subject. It matches titles, keys and briefs, lists title matches first, and shows each diagram's family and the first line of its brief, so you can tell similar ones apart without opening them. Edit the one the person means rather than create a copy; create one when they want another diagram. `diagram_create` saves a new one from a DSP scene, or from Mermaid text (`erDiagram` or `flowchart`), whose node IDs become the element IDs. Give it a `key` such as `payments-architecture` (repeating the create returns the same diagram instead of a copy) and a brief, which is what the next agent's search matches and reads first.

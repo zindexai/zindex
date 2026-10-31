@@ -13,7 +13,7 @@ Nothing runs on your computer. The MCP server is remote, and the plugin only tel
 
 ## Signing in
 
-Without an account, the agent can check a diagram (`diagram_validate`) and preview one without saving it (`diagram_render`). When a tool needs your account, your client sends you to a Zindex page where you sign in or sign up, choose whether the agent may change diagrams or only read them (and, if you belong to a team workspace, which workspace it works in), and choose **Allow**. A new password account verifies its email on that page first; GitHub and Google sign-ups are verified at once. Cursor and Antigravity CLI send you there when they connect instead. Each client's steps are below.
+Without an account, the agent can check a diagram (`diagram_validate`), preview one without saving it, and render a published or shared diagram from its link (`diagram_render`). When a tool needs your account, your client sends you to a Zindex page where you sign in or sign up, choose whether the agent may change diagrams or only read them (and, if you belong to a team workspace, which workspace it works in), and choose **Allow**. A new password account verifies its email on that page first; GitHub and Google sign-ups are verified at once. Cursor and Antigravity CLI send you there when they connect instead. Each client's steps are below.
 
 The plugin always connects with that sign-in. It carries no API key. To connect with an API key instead, skip the plugin and add the server yourself, as the [connect guide](https://zindex.ai/docs/tools/) shows.
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "zindex",
-  "version": "8.23.1",
-  "description": "Create versioned diagrams that your team and agents keep editing: the Zindex skill and the Zindex MCP server.",
+  "version": "8.24.0",
+  "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server at https://api.zindex.ai/mcp.",
   "author": {
     "name": "Zindex",
     "email": "support@zindex.ai",

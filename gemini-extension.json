@@ -1,7 +1,7 @@
 {
   "name": "zindex",
-  "version": "8.23.1",
-  "description": "Create versioned diagrams that your team and agents keep editing: the Zindex skill and the Zindex MCP server.",
+  "version": "8.24.0",
+  "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server at https://api.zindex.ai/mcp.",
   "mcpServers": {
     "zindex": {
       "httpUrl": "https://api.zindex.ai/mcp"

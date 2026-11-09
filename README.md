@@ -92,7 +92,7 @@ Clients that support [Agent Plugins 1.0](https://agent-plugins.org/specification
 | `diagram_find` | Lists your diagrams |
 | `diagram_get` | Reads a diagram as an outline, scene JSON or Mermaid; any revision by number or date |
 | `diagram_validate` | Checks a diagram without saving it |
-| `diagram_create` | Saves a new diagram from a scene, or from Mermaid `erDiagram` or `flowchart` text |
+| `diagram_create` | Saves a new diagram from a scene, or from Mermaid `erDiagram`, `flowchart` or `sequenceDiagram` text |
 | `diagram_edit` | Changes a diagram; every change is a new revision |
 | `diagram_render` | Returns SVG and PNG links |
 | `diagram_history` | Lists revisions, or compares two |

@@ -1,7 +1,7 @@
 {
   "name": "zindex",
   "displayName": "Zindex",
-  "version": "8.32.1",
+  "version": "8.35.0",
   "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server at https://api.zindex.ai/mcp.",
   "author": {
     "name": "Zindex",

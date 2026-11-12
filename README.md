@@ -7,7 +7,7 @@ This repository is the Zindex plugin. It works in Claude Code, Claude, VS Code, 
 ## What it installs
 
 - **The Zindex skill**, in `skills/zindex/`. It tells the agent how to find, read, change and render a diagram, and how to write one. It's the same text zindex.ai serves at <https://zindex.ai/skill/SKILL.md>.
-- **The Zindex MCP server's address**, `https://api.zindex.ai/mcp`. The server has nine `diagram_*` tools.
+- **The Zindex MCP server's address**, `https://api.zindex.ai/mcp`. The server has nine `diagram_*` tools. In Claude, you then add the server on the plugin's **Connectors** tab, as [Install](#install) shows.
 
 Nothing runs on your computer. The MCP server is remote, and the plugin only tells your client where it is. The skill is Markdown text. There are no scripts, hooks or commands. Your diagrams live in your Zindex account, not on your disk or in this repository.
 

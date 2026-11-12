@@ -7,7 +7,12 @@ description: Immutable agent diagrams. Save, change and render diagrams in Zinde
 
 Immutable agent diagrams. Every saved version is kept exactly as it was, with its own revision number and time, so a diagram made today can be read, changed and rendered the same way later, from any MCP client or the REST API.
 
-If no `diagram_*` tools are available, Zindex isn't connected. The steps for each app are at https://zindex.ai/connect/.
+If no `diagram_*` tools are available, Zindex isn't connected. Tell the person how to connect it:
+
+- **They added the Zindex plugin, in an app that has Customize → Plugins:** adding the plugin doesn't connect Zindex. The person opens the Zindex plugin under Customize → Plugins, on the web or in the desktop app. On its Connectors tab, they add Zindex and connect it. If they can't add it, an owner of their organization in that app adds it first, then they connect it.
+- **Anything else:** the steps for each app are at https://zindex.ai/connect/.
+
+If you can't tell which case applies, give the person both, and say the first is for an app that has Customize → Plugins.
 
 ## The loop
 

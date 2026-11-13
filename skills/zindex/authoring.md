@@ -47,7 +47,16 @@ Without autoSize the node keeps its layout height, and TEXT_OVERFLOW gives the h
 
 Text is drawn in Inter, fontFamily "sans", the default. fontFamily "mono" draws in a monospace font, for paths, endpoints and types. Any other fontFamily draws in Inter with FONT_FAMILY_UNKNOWN: set sans or mono, or remove it.
 
-Inter and its fallback fonts draw: Latin, Cyrillic, Greek, Armenian and Georgian letters with their accents, Chinese, Japanese and Korean, digits, punctuation, arrows, math and logic signs (∧, ∀, ∈), currency signs, symbols and box drawing. Other scripts are drawn as empty boxes, among them Arabic, Hebrew, Thai and the Indic scripts. So are emoji (✅, ⭐), rare Chinese characters and a few rare signs; a sign Unicode shows as text by default (⚠, ♥) is drawn as text, even as ⚠️. Both lists: https://zindex.ai/docs/reference/rendering/#text-and-scripts
+Inter and its fallback fonts draw:
+
+- Latin, Cyrillic, Greek, Armenian and Georgian letters with their accents.
+- Chinese, Japanese and Korean.
+- Digits, punctuation, arrows, math and logic signs (∧, ∀, ∈), currency signs, symbols and box drawing.
+- Every emoji of Unicode 18.0, in its own colors (✅, 🚀, 👍🏽, 🇯🇵).
+
+A sign Unicode shows as text by default (⚠, ♥) is drawn as text. Followed by U+FE0F, the emoji selector (⚠️), it is drawn as an emoji.
+
+Other scripts are drawn as empty boxes, among them Arabic, Hebrew, Thai and the Indic scripts. So are most rare Chinese characters and a few rare signs. Both lists: https://zindex.ai/docs/reference/rendering/#text-and-scripts
 
 In sans, -> and => are drawn as arrows; in mono they stay as typed.
 
@@ -55,7 +64,7 @@ For Chinese, Japanese or Korean text, set scene.lang to a BCP 47 tag (ja, ko, zh
 
 A check, save or edit whose drawn text holds a box returns one CHARACTER_NOT_DRAWN warning, with no element. Its fix lists up to five of the characters and names up to three elements that hold one: a label or title, an ER table's columns, an edge's stepText or a fragment's guards. Fix those, then read the next write's warnings for the rest. The op for each: https://zindex.ai/docs/reference/rendering/#character_not_drawn
 
-Where a label must be readable, write it in a script the list above draws, with emoji in words. Or keep the text: the diagram is saved as written either way.
+Where a label must be readable, write it in a script the list above draws. Or keep the text: the diagram is saved as written either way.
 
 ## When to reach for which element kind
 Before declaring "Zindex can't do X", check this list. Most "limitations" are actually unfamiliar primitives:

@@ -51,7 +51,7 @@ Inter and its fallback fonts draw: Latin, Cyrillic, Greek, Armenian and Georgian
 
 In sans, -> and => are drawn as arrows; in mono they stay as typed.
 
-For Chinese, Japanese or Korean text, set scene.lang to a BCP 47 tag (ja, ko, zh-Hans, zh-Hant or zh-HK): it picks the letterforms Chinese characters are drawn in. Without it, or with another language such as en, the language is inferred from the text, and a short label whose characters Traditional Chinese and Japanese share is read as Simplified Chinese. A diagram made from Mermaid text gets it with updateScene after the create.
+For Chinese, Japanese or Korean text, set scene.lang to a BCP 47 tag (ja, ko, zh-Hans, zh-Hant or zh-HK): it picks the letterforms Chinese characters are drawn in. Without it, or with another language such as en, the diagram's whole text decides. A diagram whose Chinese characters Simplified Chinese, Traditional Chinese and Japanese all share reads as Simplified Chinese. Japanese written without kana can read as Traditional Chinese. A diagram made from Mermaid text gets it with updateScene after the create.
 
 A check, save or edit whose drawn text holds a box returns one CHARACTER_NOT_DRAWN warning, with no element. Its fix lists up to five of the characters and names up to three elements that hold one: a label or title, an ER table's columns, an edge's stepText or a fragment's guards. Fix those, then read the next write's warnings for the rest. The op for each: https://zindex.ai/docs/reference/rendering/#character_not_drawn
 
@@ -111,6 +111,7 @@ For steps with yes/no decisions and loops, use flowchart. For BPMN events and ga
   - Numbering: set autonumber: true, or { "start": 10, "increment": 10 }, in the document's top-level extensions (updateScene's extensions in an edit). Messages are numbered from the top each time the diagram is drawn, so inserting one renumbers the rest without changing them. A message's own step restarts the count, and notes and hidden messages take none. Numbers are whole: write 1.1-style numbering in the label.
   - endArrow: "cross" draws an X just short of the lifeline, as Mermaid's -x does.
 - network: network.server / router / switch / firewall / cloud / client nodes. Force-directed layout (no inherent direction).
+- state graphs: draw states and transitions in a flowchart (or workflow) diagram; there a label such as submit [valid] / save draws its guard and action smaller and muted. In other families, and with no family, labels are plain text.
 - orgchart: org.person / org.role with label "Name\nTitle". Add accentColor for department stripe. org.directReport (solid) / org.dottedLine (dashed) edges. Auto-layout is a tidy tree, top to bottom; it doesn't read layoutStrategy.
 - uiflow: uiflow.screen / modal with label "Title\nDescription" (first line title bar, rest body). uiflow.entry / exit for start/end circles. uiflow.navigate / back (dashed) / action edges.
 
@@ -164,7 +165,7 @@ Set icon to a semantic key. Two packs:
 - Lucide (~52): "lucide:database", "lucide:server", "lucide:cloud", "lucide:shield", etc. Match the node's text color.
 - AWS (~780, the official AWS Architecture Icons, drawn as AWS ships them): services such as "aws:lambda", "aws:s3", "aws:ec2", "aws:rds", "aws:aurora", "aws:dynamodb", "aws:sqs", "aws:cloudfront", "aws:route53"; resources such as "aws:internet-gateway", "aws:nat-gateway", "aws:application-load-balancer" (alias "aws:alb"), "aws:ecs-task", "aws:ec2-instance"; general icons "aws:users", "aws:client", "aws:internet". Every key: https://zindex.ai/docs/reference/aws-icons/. Every aws:* key that worked before still works, as a key or an alias. A service icon draws at 70 px, a resource or general icon at 42, whatever the node's box; leave the node's size to the engine.
 
-Your own icon: give it as a data: URI and it is drawn wherever the image is. A URL such as "https://example.com/custom.svg" stays a link in the SVG: images Zindex serves don't load it, nor do most viewers, and PNG output leaves it out. Built-in icons embed as base64, so the image needs no other request.
+Your own icon: give it as a data: URI and it is drawn wherever the image is. A URL such as "https://example.com/custom.svg" stays a link in the SVG: images Zindex serves don't load it, nor do most viewers, and PNG output leaves it out; a check or save returns ASSET_URI_POLICY_VIOLATION for it. Built-in icons embed as base64, so the image needs no other request.
 
 AWS icons (aws:*) render icon-only by default - no bounding rectangle - so they sit cleanly inside AWS's groups; an externalSystem node keeps its dashed box with the icon inside, and a non-white fill draws the shape (below). Only the aws and lucide packs exist. An unknown key, such as gcp:*, azure:* or a Lucide name outside the built-in set, renders no icon (a gcp:* or azure:* node keeps its box) and the save returns ICON_NOT_FOUND with the keys spelled like it or named for its words, so give any other icon as a data: URI; icon: null on updateNode removes an icon.
 

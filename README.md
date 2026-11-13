@@ -13,7 +13,7 @@ Nothing runs on your computer. The MCP server is remote, and the plugin only tel
 
 ## Signing in
 
-Without an account, the agent can check a diagram (`diagram_validate`), preview one without saving it, and render a published or shared diagram from its link (`diagram_render`). When a tool needs your account, your client sends you to a Zindex page where you sign in or sign up, choose whether the agent may change diagrams or only read them (and, if you belong to a team workspace, which workspace it works in), and choose **Allow**. A new password account verifies its email on that page first; GitHub and Google sign-ups are verified at once. Cursor and Antigravity CLI send you there when they connect instead. Each client's steps are below.
+Every tool needs a Zindex account. When your client connects, it sends you to a Zindex page. There you sign in or sign up, choose whether the agent may change diagrams or only read them, and choose **Allow**. If you belong to a team workspace, you also choose which workspace it works in. A new password account verifies its email on that page first; GitHub and Google sign-ups are verified at once. Each client's steps are below.
 
 The plugin always connects with that sign-in. It carries no API key. To connect with an API key instead, skip the plugin and add the server yourself, as the [connect guide](https://zindex.ai/docs/tools/) shows.
 
@@ -79,7 +79,7 @@ Then start Gemini CLI and run `/mcp auth zindex` to sign in. `gemini extensions 
 
 ### ChatGPT
 
-On the web, open Plugins ([chatgpt.com/plugins](https://chatgpt.com/plugins)), choose **Add custom MCP server**, enter `https://api.zindex.ai/mcp` with OAuth sign-in, and create it as a plugin. ChatGPT opens the Zindex page the first time a tool needs your account.
+On the web, open Plugins ([chatgpt.com/plugins](https://chatgpt.com/plugins)), choose **Add custom MCP server**, enter `https://api.zindex.ai/mcp` with OAuth sign-in, and create it as a plugin. Sign in when ChatGPT asks.
 
 ### Other clients
 

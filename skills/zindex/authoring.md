@@ -162,6 +162,7 @@ What it doesn't do, and what to do instead:
 - Arrange through most frames between presets: a generic frame round all of a VPC's AZs, round whole VPCs, or round subnets next to each other in one AZ's rows, is read through, but any other frame between a Region and its VPC, or a VPC and its AZs (round some AZs, or an account or security group there), is laid out as any frame with everything in it (no AZ columns or subnet rows), and one between an AZ and its subnets puts everything in it on one row after the subnets. A generic one gets AWS_FRAME_HIDES_GROUPS, naming the groups it hides and where to list them. List them directly, or put the frame around the whole Region or VPC (a frame holding Regions or VPCs at the top or in AWS Cloud is arranged as AWS Cloud is). A group across AZs round subnets, or what they hold, can be written with spans instead; a spanning frame round AZs or VPCs gets no room for its header.
 - Order across groups: an order constraint acts only within one row or column (a subnet's row, AWS Cloud's row, a Region's column, the outside column); one between different rows or columns, and sameRank, is ignored.
 - Azure: no presets or icons. Use generic frames, and give icons as data: URIs. Google Cloud has its own (below).
+- Stack an icon for several instances: style.multiple does nothing on an aws:* node. Use AWS's own icons, such as "aws:ec2-instances" and "aws:ebs-multiple-volumes".
 - Center a node alone in its subnet that connects to only part of the row below: it stands over those nodes, off center.
 - Rearrange after edits: a diagram that grew unevenly keeps its shape; send autoLayout to arrange it again (it moves every node).
 - Bring saved outside nodes together. A node an edit adds outside AWS Cloud goes on the side of the saved outside nodes it's joined to. A line an edit adds between two saved ones on opposite sides moves neither: send autoLayout to put them on one side (it moves every node).
@@ -218,6 +219,12 @@ What it doesn't do, and what to do instead:
 - Rearrange after edits: a diagram that grew unevenly keeps its shape; send autoLayout to arrange it again (it moves every node).
 
 Don't style the presets or give the cards a fill: Google draws its groups and cards in its own colors on every canvas. The exception is a standby resource, such as a Cloud SQL standby, which Google draws on gray. Set its style.fill to "#DADCE0". A read replica keeps the white card.
+
+When one node stands for several instances of one product, such as a set of buckets or one zone's pool of VMs, set style.multiple: true on it. The card draws as a stack, as Google draws one: one gray copy behind the card. A stack is one node, and a node takes at most one zone's strip, so instances spread over zones stay one card per zone. It works with a standby's fill, and a named style can carry it.
+
+What a stack doesn't do (full behavior: https://zindex.ai/docs/reference/rendering/#google-cloud-cards):
+- Show a count: it draws one copy however many there are. Put the number in the label when it matters ("Web servers (3)").
+- Stack other nodes: only a gcp:* card draws it. A node with another icon or none, an externalSystem node, and BPMN, sequence, ER, org chart and UI flow nodes ignore the key. On those, say it in the label; AWS has its own icons (AWS architecture, above).
 
 ## Refining auto-layout results
 Use align constraints (addConstraint with type "align") to align nodes within containers on a shared axis. Use order constraints to control spatial relationships between nodes (e.g. source leftOf target). When the engine places the children of a generic frame, it also aligns them on the layout axis, centering the group so nodes appear professionally aligned without manual intervention.

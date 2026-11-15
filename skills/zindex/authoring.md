@@ -217,6 +217,7 @@ What it doesn't do, and what to do instead:
 - Arrange what updateFrame makes Google's: frames it turns into Google groups stay as placed, and new nodes go inside their frames but outside Google's rows and columns, until autoLayout. Send one in the same edit.
 - GKE clusters, node pools and folders: Google defines no group for them, so draw them as generic frames. Such a frame is laid out as one block in its row, so the cards in it stand in no zone column.
 - Rearrange after edits: a diagram that grew unevenly keeps its shape; send autoLayout to arrange it again (it moves every node).
+- Wrap edge labels: the engine doesn't wrap an edge label. On a line between two cards of one tier, a label wider than the line hangs out past its ends, so keep it no wider than the line.
 
 Don't style the presets or give the cards a fill: Google draws its groups and cards in its own colors on every canvas. The exception is a standby resource, such as a Cloud SQL standby, which Google draws on gray. Set its style.fill to "#DADCE0". A read replica keeps the white card.
 

@@ -41,7 +41,7 @@ Edges: { id, kind: "edge", from: { elementId }, to: { elementId }, router?: "ort
 
 Long labels wrap on their own: a node's textStyle.wrap defaults to "auto", which keeps the label on one line up to 250 px (400 px for a diamond) and wraps a longer one there in even lines, the node growing taller, and wider only to fit a word wider than that; wrap: "none" keeps one line however long. Lines break at spaces, after hyphens and slashes, and between Chinese or Japanese characters, never inside a word, number or date, except wrap: "character" with one wider than the node. Nodes saved before "auto" store "none": set "auto" with updateNode to wrap them.
 
-An edge's label wraps at 200 px, its text plus 4 px each side. Lines break where a node's label breaks, each taking every word that fits, and each line you write with \n wraps by itself. A word wider than a line stays whole; wrap: "character" breaks it. In flowchart, workflow, uiflow and sequence diagrams, a label written as EVENT [guard] / action breaks between its parts first.
+An edge's label wraps at 200 px, its text plus 4 px each side. Lines break where a node's label breaks, each taking every word that fits, and each line you write with \n wraps by itself. A word wider than a line stays whole; wrap: "character" breaks it. In flowchart, workflow, uiflow and sequence diagrams, a label written as EVENT [guard] / action breaks between its parts first. A label with no clean place beside its line also wraps narrower on its own, in up to three lines (the lines you wrote, if more). wrap: "none", a sequence message's label and a label that can't break (one long identifier) keep their lines.
 
 An edge's textStyle takes wrap alone (createEdge, updateEdge, setText); align and verticalAlign are refused, and setText ignores them. wrap: "none" keeps each line as written, which can run over lifelines or nodes. The 200 px can't be changed. A saved diagram's label wider than 200 px wraps the next time the diagram is drawn; set "none" to keep it on one line.
 
@@ -240,7 +240,7 @@ What it doesn't do, and what to do instead:
 - Arrange what updateFrame makes Google's: frames it turns into Google groups stay as placed, and new nodes go inside their frames but outside Google's rows and columns, until autoLayout. Send one in the same edit.
 - GKE clusters, node pools and folders: Google defines no group for them, so draw them as generic frames. Such a frame is laid out as one block in its row, so the cards in it stand in no zone column.
 - Rearrange after edits: a diagram that grew unevenly keeps its shape; send autoLayout to arrange it again (it moves every node).
-- Edge labels on a tier's line: the engine wraps a label at 200 px, not at the line's length. A label wider than a line between two cards of one tier hangs out past its ends, so keep it no wider than the line, or break it with \n.
+- Edge labels on a tier's line: the engine wraps a label at 200 px (narrower only where it has no clean place), not at the line's length. A label wider than a line between two cards of one tier hangs out past its ends, so keep it no wider than the line, or break it with \n.
 
 Don't style the presets or give the cards a fill: Google draws its groups and cards in its own colors on every canvas. The exception is a standby resource, such as a Cloud SQL standby, which Google draws on gray. Set its style.fill to "#DADCE0". A read replica keeps the white card.
 

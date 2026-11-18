@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "zindex",
-  "version": "9.13.1",
+  "version": "9.14.0",
   "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server at https://api.zindex.ai/mcp.",
   "author": {
     "name": "Zindex",
@@ -18,5 +18,48 @@
     "architecture",
     "erd",
     "versioning"
-  ]
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Zindex",
+        "shortDescription": "Create and update diagrams",
+        "longDescription": "Immutable agent diagrams. Ask ChatGPT for an architecture, a data model, a sequence diagram, a business process, a network, an org chart, a UI flow or a flowchart. Zindex saves it as a diagram you can come back to.\n\nWith Zindex, a diagram outlasts the chat it was made in. In a later chat, ChatGPT finds it by name, reads a short brief instead of the whole drawing, and sends only what changes. Agents you connect from other apps, signed in to the same Zindex workspace, work on the same diagrams.\n\nChatGPT says what's in a diagram. Zindex checks each change, lays the diagram out and draws it with code, not a model, so it looks the same whichever agent edits it. AWS and Google Cloud architectures are drawn with each provider's icons. ChatGPT can also start from Mermaid text: a flowchart, an entity-relationship diagram or a sequence diagram.\n\nEvery change is a new numbered version, and nothing in a diagram's history can be rewritten: each version's hash covers the one before it. ChatGPT can open any version by number or date, say who saved it and from which app, and compare two versions. Each version keeps the image it was saved with, so an engine update never changes an old picture.\n\nWhen you ask, ChatGPT can publish a diagram, so anyone with its link can see and copy it. It can also delete one, and you can undo a delete for 24 hours. ChatGPT asks you before each of these, unless you've chosen to always allow Zindex.\n\nWhat it needs: a Zindex account. ChatGPT asks you to sign in when you connect, and you can create an account there. You choose read and write, or read only.\n\nWhat it doesn't do: Zindex runs no model on your diagrams. It doesn't draw charts of data, and the only diagram text it reads is the three kinds of Mermaid above. For anything else, describe the diagram.",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Creates architecture, data model, sequence, process, network, org chart, UI flow and flowchart diagrams",
+          "Draws AWS and Google Cloud architectures with each provider's icons",
+          "Starts a diagram from a Mermaid flowchart, entity-relationship diagram or sequence diagram",
+          "Finds your saved diagrams by title, short name or brief",
+          "Edits a saved diagram by sending only the parts that change",
+          "Checks a diagram for errors before saving it",
+          "Keeps every change as a numbered version that can't be rewritten",
+          "Opens any version by number or date",
+          "Compares two versions and lists what changed",
+          "Shows who saved each version and from which app",
+          "Shows a diagram's image in the chat",
+          "Publishes a diagram, or makes it private again",
+          "Deletes a diagram, with 24 hours to undo",
+          "Reports a problem with a diagram to Zindex support",
+          "Sends Zindex a bug report, a request or other feedback, when you ask"
+        ],
+        "defaultPrompt": [
+          "Create a Zindex architecture diagram of a web app with an API, a Postgres database and a background worker",
+          "Add a Redis cache between the API and the database in my web app architecture diagram",
+          "List my Zindex diagrams and show me the one I changed most recently"
+        ],
+        "websiteURL": "https://zindex.ai/",
+        "supportURL": "https://zindex.ai/contact/",
+        "privacyPolicyURL": "https://zindex.ai/privacy/",
+        "termsOfServiceURL": "https://zindex.ai/terms/",
+        "logo": "./logo.png",
+        "brandColor": "#D4A843",
+        "brandColorDark": "#D4A843"
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Zindex in ChatGPT: create, find and change diagrams that keep every version, see any version's image, compare versions, and publish or delete diagrams."
+      }
+    }
+  }
 }

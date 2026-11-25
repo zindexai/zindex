@@ -24,7 +24,7 @@ Mixed mode: nodes WITH explicit layout are pinned. Nodes WITHOUT (or at exactly 
 - a frame added or deleted around it would leave frames overlapping
 - an `order` constraint an edit adds finds its two nodes the wrong way around
 
-Positions are kept: after the first save the engine records each node's position in its layout, and later edits keep it, unless one of these happens. The engine then places the nodes it affects, and the edit's changed lists them (and each node whose drawn size the edit saves):
+Positions are kept: after the first save the engine records each node's position in its layout, and later edits keep it, unless one of these happens. The engine then places the nodes it affects, and the edit's changed.moved lists them (and each node whose drawn size the edit saves):
 - a node that grows needs the room
 - a node the edit adds needs more room for its edge label than the column it joins (that column and everything past it along the flow move just far enough)
 - a task the edit adds to a lane needs the lane to grow or a column of its own (what lies past it moves)
@@ -247,7 +247,7 @@ What the engine does:
 - Routes cross AZ columns as flows cross swimlanes. Lines keep 16 px from group titles and 32 px off group borders where the channel has room. Ends on one icon face keep 16 px apart, and an arrowhead from below meets a side of the icon rather than its label where one more bend gets there.
 - A generic frame round all of a VPC's AZs (an EKS cluster), round whole VPCs of a Region, or round subnets next to each other in one AZ's rows (a tier) is read through: the presets inside keep the arrangement, and a tier's frame is fitted round its subnets. Full behavior: https://zindex.ai/docs/reference/layout-engine/#aws-architecture-diagrams
 
-After the first save positions are kept, and the edit's changed lists what moved:
+After the first save positions are kept, and the edit's changed.moved lists what moved:
 - A node an edit adds takes a free place in its row or column. A full row widens every AZ and moves what lies right of it, and a full Region column opens and moves the items below it down.
 - createFrame with frame set to the VPC adds an AZ as a new column right of the last.
 - An order constraint an edit adds swaps its two nodes when they stand the wrong way around in one row or column. When they can't simply trade places, as in the two halves of a split Region column, it places both again as added nodes, which can grow the row or column.
@@ -331,7 +331,7 @@ What the engine does:
     - Analysts who only read the landing bucket stand above and keep a long line down the boundary's side.
 - Each group is fitted to its members; a group's layout is only a minimum. Full behavior: https://zindex.ai/docs/reference/layout-engine/#google-cloud-architecture-diagrams
 
-After the first save positions are kept. An edit moves only what lies past a growth and the nodes named below; the edit's changed lists them, and deleting closes no gap:
+After the first save positions are kept. An edit moves only what lies past a growth and the nodes named below; the edit's changed.moved lists them, and deleting closes no gap:
 - A card: createNode with frame set to its tier, and updateFrame with its zone's whole spans, the card included. It stands in its zone's column. A card placed between the ends of a replication line sends the line under the tier's cards when the failover is labeled; the tier deepens in every Region and the rows under it move down.
 - A new zone becomes the Region's last column.
 - A new tier, or a node in a subnet such as a cache, goes in at its place in the flow; a new row moves later rows down in every Region.
@@ -382,7 +382,7 @@ What a stack doesn't do (full behavior: https://zindex.ai/docs/reference/renderi
 Use align constraints (addConstraint with type "align") to align nodes within containers on a shared axis. Use order constraints to control spatial relationships between nodes (e.g. source leftOf target). When the engine places the children of a generic frame, it also aligns them on the layout axis, centering the group so nodes appear professionally aligned without manual intervention.
 
 ## Hard ordering constraints
-Use type: "order" constraints to control node placement when the engine lays out every node. Example: { type: "order", source: "db", target: "api", relation: "rightOf" } ensures the database is placed to the right of the API. Relations: leftOf, rightOf, above, below, sameRank. On a saved diagram, adding an order constraint places its two nodes again, in order, when they aren't already in that order. Every other node keeps its position, except in an AWS or Google Cloud diagram, where the row or column can grow, or an AWS Region's column move right as one for a label's room; the edit's changed lists them. Conflicting constraints are gracefully dropped.
+Use type: "order" constraints to control node placement when the engine lays out every node. Example: { type: "order", source: "db", target: "api", relation: "rightOf" } ensures the database is placed to the right of the API. Relations: leftOf, rightOf, above, below, sameRank. On a saved diagram, adding an order constraint places its two nodes again, in order, when they aren't already in that order. Every other node keeps its position, except in an AWS or Google Cloud diagram, where the row or column can grow, or an AWS Region's column move right as one for a label's room; the edit's changed.moved lists them. Conflicting constraints are gracefully dropped.
 
 ## Styles
 The `style` field on every element accepts EITHER a named-style string OR an inline style object - both forms validate.

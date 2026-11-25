@@ -54,7 +54,7 @@ Each key or sign-in works in one workspace: the person's own, or a team workspac
 - For a Google Cloud architecture, set `diagramFamily: "architecture"` (or leave it out; no other family arranges Google's groups), and leave `layout` off everything. The engine draws Google's cards and groups and lays zones out as columns and tiers as rows; the authoring guide's Google Cloud section says what it does and doesn't do.
   - Write Google's groups as frames with their presets, nested `gcp.cloud` > `gcp.region` > `gcp.subnet` > `gcp.tier` or `gcp.instanceGroup`, with an optional `gcp.project` round the Regions. Write the VPC and each zone as frames with `spans`: the VPC round its subnets, a zone round its cards in one Region.
   - Write the services as nodes with `gcp:*` icons, each listed in the frame it runs in: instances and databases in tiers, regional services in the Region, global ones in `gcp.cloud`, users outside it. Only a tier's cards stand in zone columns.
-- Nodes keep their positions after the first save unless one of these applies, and the edit's `changed` lists each node that moves or is saved at a new size:
+- Nodes keep their positions after the first save unless one of these applies. The edit's `changed.moved` lists each node that only moved or was saved at a new size; `changed.updated` lists what changed in content:
   - A node that grows needs the room: it pushes the nodes in its way (not in sequence diagrams). A size you write is a minimum, and a save stores the size a node is drawn at, except where the [authoring guide](authoring.md) says it doesn't. Work an offset from the saved size, or give sides.
   - A new node whose edge label needs more room than the column it joins pushes that column, and everything past it along the flow, just far enough.
   - A node an edit inserts in a flowchart, between two placed nodes, goes on the first one's line, and what lies past it moves along the flow. A new node on a decision's no exit goes beside the decision instead. In a flowchart with a frame that has no `layout`, new nodes are placed as in other families.
@@ -84,7 +84,7 @@ Each key or sign-in works in one workspace: the person's own, or a team workspac
 ## Going back
 
 - **Any version:** `diagram_get` with `revision`, or `asOf` (a date such as `2026-09-26`, meaning the end of that day in UTC, or an ISO timestamp with an offset).
-- **What changed:** `diagram_history` lists versions with time, who saved each (`by`), client and message; `compare: { from, to }` lists the elements added, changed and removed between two versions or dates. A published diagram's or share link's image for one version takes `?from=<revision>` and colors what changed since, with no key (`https://zindex.ai/d/<ref>@<n>.svg?from=<m>`).
+- **What changed:** `diagram_history` lists versions with time, who saved each (`by`), client and message; `compare: { from, to }` lists the elements added, changed, removed and moved (position or size only) between two versions or dates. A published diagram's or share link's image for one version takes `?from=<revision>` and colors what changed since, with no key (`https://zindex.ai/d/<ref>@<n>.svg?from=<m>`).
 - **Undo:** `diagram_edit` with `restoreRevision` makes a new revision equal to an old one. History is never rewritten.
 - **Check nothing changed:** writes, renders and `diagram_history` carry `chain`, a hash covering the version and every one before it. The same `chain` later means nothing up to it changed: https://zindex.ai/docs/concepts/#verifying
 

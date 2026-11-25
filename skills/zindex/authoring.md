@@ -417,7 +417,9 @@ Text color auto-adjusts for contrast against custom fills if you don't set textC
 
 Scene-level palette: set `palette` at the scene root (e.g. `palette: { nodeFill: "#003366", edgeStroke: "#004488" }`) to override theme defaults for all unstyled elements - element explicit styles still win.
 
-Pick colors for a light canvas. A dark preview (`POST /v1/diagrams/preview` with `theme` set to `dark`, `blueprint` or `sketch`, or the playground's theme menu) adapts them, keeping each hue; a dark `palette.background`, or a dark `canvas.background` with none, makes the scene a dark design, drawn as written. MCP's `diagram_render` takes no theme: it draws as saved versions are drawn, in the default style (or `dark` for a dark `canvas.background`), with the scene's colors as written.
+Pick colors for a light canvas. A dark preview (`POST /v1/diagrams/preview` with `theme` set to `dark`, `blueprint` or `sketch`, or the playground's theme menu) adapts them, keeping each hue. MCP's `diagram_render` takes no theme: it draws as saved versions are drawn, in the default style, or in `dark` for a dark `canvas.background`.
+
+A dark `palette.background`, or a dark `canvas.background` with none, makes the scene a dark design, drawn as written. One exception holds in `dark`, `blueprint` and `sketch`, and in `diagram_render` on a dark `canvas.background`. There, any frame but an `aws.*` or `gcp.*` preset is drawn as a dark preview draws it when its opaque fill is too light for the theme's text (under 4.5:1). Nodes, notes and cards keep their colors.
 
 ## Icons
 Set icon to a semantic key. Three packs:

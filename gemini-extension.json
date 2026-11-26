@@ -1,6 +1,6 @@
 {
   "name": "zindex",
-  "version": "10.2.5",
+  "version": "10.4.0",
   "description": "Immutable diagrams for AI agents. This plugin adds the Zindex skill and the Zindex MCP server at https://api.zindex.ai/mcp.",
   "mcpServers": {
     "zindex": {

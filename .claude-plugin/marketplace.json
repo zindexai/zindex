@@ -1,6 +1,6 @@
 {
   "name": "zindex",
-  "description": "Immutable agent diagrams: the Zindex skill and the Zindex MCP server at https://api.zindex.ai/mcp.",
+  "description": "Immutable diagrams for AI agents. This plugin adds the Zindex skill and the Zindex MCP server at https://api.zindex.ai/mcp.",
   "owner": {
     "name": "Zindex",
     "email": "support@zindex.ai",

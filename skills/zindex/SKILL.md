@@ -1,11 +1,11 @@
 ---
 name: zindex
-description: Immutable agent diagrams. Save, change and render diagrams in Zindex so they outlast one conversation. Use when the user wants a diagram they can come back to, change later from another tool, compare over time or see as it was on a date; when a repository has a .zindex.json file; or when the diagram_* tools are available.
+description: Immutable diagrams for AI agents. Save, change and render diagrams in Zindex so they outlast one conversation. Use when the user wants a diagram they can come back to, change later from another tool, compare over time or see as it was on a date; when a repository has a .zindex.json file; or when the diagram_* tools are available.
 ---
 
 # Zindex
 
-Immutable agent diagrams. Every saved version is kept exactly as it was, with its own revision number and time, so a diagram made today can be read, changed and rendered the same way later, from any MCP client or the REST API.
+Immutable diagrams for AI agents. Every saved version is kept exactly as it was, with its own revision number and time, so a diagram made today can be read, changed and rendered the same way later, from any MCP client or the REST API.
 
 If no `diagram_*` tools are available, Zindex isn't connected. Tell the person how to connect it:
 

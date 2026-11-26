@@ -101,7 +101,10 @@ Edges: { id, kind: "edge", from: { elementId }, to: { elementId }, router?: "ort
 
 Long labels wrap on their own: a node's textStyle.wrap defaults to "auto", which keeps the label on one line up to 250 px (400 px for a diamond) and wraps a longer one there in even lines, the node growing taller, and wider only to fit a word wider than that; wrap: "none" keeps one line however long. Lines break at spaces, after hyphens and slashes, and between Chinese or Japanese characters, never inside a word, number or date, except wrap: "character" with one wider than the node. Nodes saved before "auto" store "none": set "auto" with updateNode to wrap them.
 
-An edge's label wraps at 200 px, its text plus 4 px each side. Lines break where a node's label breaks, each taking every word that fits, and each line you write with \n wraps by itself. A word wider than a line stays whole; wrap: "character" breaks it. In flowchart, workflow, uiflow and sequence diagrams, a label written as EVENT [guard] / action breaks between its parts first. A label with no clean place beside its line also wraps narrower on its own, in up to three lines (the lines you wrote, if more). wrap: "none", a sequence message's label and a label that can't break (one long identifier) keep their lines.
+An edge's label wraps at 200 px, its text plus 4 px each side. Lines break where a node's label breaks, each taking every word that fits, and each line you write with \n wraps by itself.
+- A word wider than a line stays whole; wrap: "character" breaks it.
+- In flowchart, workflow and uiflow diagrams, a label written as EVENT [guard] / action breaks between its parts first.
+- A label with no clean place beside its line wraps narrower, in up to three lines (the lines you wrote, if more). wrap: "none", a sequence message's label and a label that can't break (one long identifier) keep their lines.
 
 An edge's textStyle takes wrap alone (createEdge, updateEdge, setText); align and verticalAlign are refused, and setText ignores them. wrap: "none" keeps each line as written, which can run over lifelines or nodes. The 200 px can't be changed. A saved diagram's label wider than 200 px wraps the next time the diagram is drawn; set "none" to keep it on one line.
 
@@ -223,7 +226,7 @@ For steps with yes/no decisions and loops, use flowchart. For BPMN events and ga
   - Numbering: set autonumber: true, or { "start": 10, "increment": 10 }, in the document's top-level extensions (updateScene's extensions in an edit). Messages are numbered from the top each time the diagram is drawn, so inserting one renumbers the rest without changing them. A message's own step restarts the count, and notes and hidden messages take none. Numbers are whole: write 1.1-style numbering in the label.
   - endArrow: "cross" draws an X just short of the lifeline, as Mermaid's -x does.
 - network: network.server / router / switch / firewall / cloud / client nodes. Force-directed layout (no inherent direction).
-- state graphs: draw states and transitions in a flowchart (or workflow) diagram; there a label such as submit [valid] / save draws its guard and action smaller and muted. In other families, and with no family, labels are plain text.
+- state graphs: draw states and transitions in a flowchart (or workflow) diagram. There, as in uiflow, a label such as submit [valid] / save draws its guard and action smaller and muted. Every other family, sequence included, and a diagram with no family draw labels as plain text.
 - orgchart: org.person / org.role with label "Name\nTitle". Add accentColor for department stripe. org.directReport (solid) / org.dottedLine (dashed) edges. Auto-layout is a tidy tree, top to bottom; it doesn't read layoutStrategy.
 - uiflow: uiflow.screen / modal with label "Title\nDescription" (first line title bar, rest body). uiflow.entry / exit for start/end circles. uiflow.navigate / back (dashed) / action edges.
 

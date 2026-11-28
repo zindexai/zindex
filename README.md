@@ -97,7 +97,7 @@ Clients that support [Agent Plugins 1.0](https://agent-plugins.org/specification
 | `diagram_render` | Returns SVG and PNG links |
 | `diagram_history` | Lists revisions, or compares two |
 | `diagram_delete` | Deletes a diagram, with a 24-hour undo |
-| `diagram_share` | Publishes a diagram, makes share links (Pro or Team), reports a problem or sends feedback |
+| `diagram_share` | Publishes a diagram, makes or revokes share links, reports a problem or sends feedback |
 
 `diagram_delete` asks you to confirm. `diagram_share` asks before it publishes a diagram, makes a share link, reports a problem or sends feedback. The [MCP tools reference](https://zindex.ai/docs/tools/) has every input.
 
